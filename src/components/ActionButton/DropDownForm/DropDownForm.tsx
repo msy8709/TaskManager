@@ -5,6 +5,7 @@ import { v4 } from 'uuid';
 import { addTask} from '../../../store/slices/boardsSlice';
 import { addLog } from '../../../store/slices/loggerSlice';
 import { addList } from '../../../store/slices/boardsSlice';
+import { button, buttons, close, input, listForm, taskForm } from './DropDownForm.css';
 type TDropDownFormProps = {
     boardId: string;
     listId: string;
@@ -75,13 +76,14 @@ const DropDownForm: FC<TDropDownFormProps> = ({
         }
     }
     return (
-        <div>
-            <textarea value={text} onChange={handleTextChange} autoFocus placeholder={formPlaceholder} onBlur={() => setIsFormOpen(false)}/>
-        
-        <button onMouseDown={handleButtonClick}>
-            {buttonTitle}
-        </button>
-        <FiX />
+        <div className={list ? listForm : taskForm}>
+            <textarea className={input}value={text} onChange={handleTextChange} autoFocus placeholder={formPlaceholder} onBlur={() => setIsFormOpen(false)}/>
+            <div className={buttons}>
+                <button className={button} onMouseDown={handleButtonClick}>
+                {buttonTitle}
+                </button>
+                <FiX className={close}/>
+            </div>
         </div>
     );
 };
