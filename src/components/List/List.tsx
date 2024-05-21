@@ -55,7 +55,7 @@ const List: FC<TListProps> = ({
           <Task taskName={task.taskName} taskDescription={task.taskDescription} boardId={boardId} id={task.taskId} index={index}/>
         </div>
       ))}
-      <ActionButton />
+      <ActionButton boardId={boardId} listId={list.listId} />
     </div>
   )
 }
